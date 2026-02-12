@@ -3,6 +3,7 @@ import PurchasePage from './pages/PurchasePage';
 import { CartContextProvider } from './context/CartContext';
 import { FormContextProvider } from './context/FormContext';
 import { FavoritesContextProvider } from './context/FavoritesContext';
+import 'react-loading-skeleton/dist/skeleton.css';
 import MainLayout from './layout/MainLayout'; 
 
 function App() {

@@ -1,11 +1,11 @@
 import { Card, Button } from "react-bootstrap";
-import { ColorSwatches } from "./ColorSwatches"; 
+import { ColorSwatches } from "./ColorSwatches";
 import { useProductCard } from "../hooks/useProductCard";
-import type { ProductDto } from "../types/product.types"; 
+import type { ProductDto } from "../types/product.types";
 import styles from "./SpecificProductCard.module.css";
 
 interface SpecificProductCardProps {
-  product: ProductDto; 
+  product: ProductDto;
   onFavoriteClick?: (product: ProductDto) => void;
   onGoToProducClick?: (product: ProductDto) => void;
   onColorSelect?: (color: string) => void;
@@ -15,15 +15,14 @@ const SpecificProductCard = ({
   product,
   onFavoriteClick,
   onGoToProducClick,
-  onColorSelect
+  onColorSelect,
 }: SpecificProductCardProps) => {
-  
   const { ui, data, actions } = useProductCard(product, {
     onFavoriteClick: () => onFavoriteClick?.(product),
     onGoToProducClick: () => onGoToProducClick?.(product),
-    onColorSelect: (_id, color) => onColorSelect?.(color)
+    onColorSelect: (_id, color) => onColorSelect?.(color),
   });
-  
+
   return (
     <Card
       className={`${styles.root} h-100 shadow-sm rounded-0`}
@@ -31,16 +30,12 @@ const SpecificProductCard = ({
       onMouseLeave={() => ui.setIsHovered(false)}
     >
       <div className={styles.imageContainer}>
-        {!data.hasStock && (
-          <div className={styles.noStockLabel}>Sin Stock</div>
-        )}
-
-        <ColorSwatches 
-            colors={data.availableColors} 
-            selectedColor={ui.selectedColor}
-            onColorSelect={actions.handleColorSelect}
+        {!data.hasStock && <div className={styles.noStockLabel}>Sin Stock</div>}
+        <ColorSwatches
+          colors={data.availableColors}
+          selectedColor={ui.selectedColor}
+          onColorSelect={actions.handleColorSelect}
         />
-
         <Card.Img
           variant="top"
           alt={data.name}
@@ -58,14 +53,17 @@ const SpecificProductCard = ({
           src={data.imageB}
         />
       </div>
-
       <div className={styles.iconContainer}>
         <Button
           onClick={actions.handleFavorite}
           variant="light"
           className={`${styles.iconButton} p-0 border-0 bg-transparent`}
         >
-          <i className={ui.isFav ? "bi bi-heart-fill text-danger" : "bi bi-heart"} />
+          <i
+            className={
+              ui.isFav ? "bi bi-heart-fill text-danger" : "bi bi-heart"
+            }
+          />
         </Button>
       </div>
 
@@ -76,7 +74,6 @@ const SpecificProductCard = ({
           <span className="small text-muted d-block mb-2">
             ${data.transferPrice.toLocaleString()} con transferencia
           </span>
-          
           <Button
             onClick={actions.handleGoToProduct}
             disabled={!data.hasStock}

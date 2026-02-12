@@ -1,34 +1,24 @@
 import { useMemo, useCallback } from "react";
-import { useForm } from "../../../context/FormContext";
 import { useFavorites } from "../../../context/FavoritesContext";
 import { useResponsiveVisibleCount } from "../hooks/useResponsiveVisibleCount";
-import type { ProductInput } from "./useProductCard";
+import { useNavigate } from 'react-router-dom';
+import type { ProductDto } from "../types/product.types";
 import type { Product } from "../../../shared/domain/product";
 
-export const useFeaturedProducts = (products: ProductInput[]) => {
+export const useFeaturedProducts = (products: ProductDto[]) => {
   const visibleCount = useResponsiveVisibleCount();
-  
+  const navigate = useNavigate();
   const { toggleFavorite: toggleFavContext } = useFavorites();
-  const { setFilters } = useForm(); // Hook verifica si es null
 
-  // Wrapper para adaptar los tipos (ProductInput -> Product)
-  const toggleFavorite = useCallback((product: ProductInput) => {
+  const toggleFavorite = useCallback((product: ProductDto) => {
     toggleFavContext(product as unknown as Product);
   }, [toggleFavContext]);
 
-  const handleProductSelect = useCallback((product: ProductInput) => {
-    setFilters((prev) => ({
-      ...prev,
-      material: product.material, // Posibles validaciones extra si es undefined
-      neckType: product.neckType,
-      fitting: product.fitting,
-      color: product.color,
-      size: product.size,
-      quantity: prev.quantity || 1, 
-    }));
-    
+  const handleProductSelect = useCallback((product: ProductDto) => {
+    alert(product.id)
+    navigate(`/purchase/${product.id}`);
     window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [setFilters]);
+  }, [navigate]);
 
   const slides = useMemo(() => {
     if (!products || products.length === 0) return [];

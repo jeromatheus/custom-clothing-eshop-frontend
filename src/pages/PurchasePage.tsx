@@ -97,7 +97,7 @@ const PurchasePage = () => {
         <h2 className="display-7 mb-1 fw-semibold text-uppercase">Productos Similares</h2>
         <FeaturedProducts 
           products={catalogData?.products || []} 
-          loading={true}
+          loading={catalogLoading}
         />
       </Row>  
       

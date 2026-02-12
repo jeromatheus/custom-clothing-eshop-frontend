@@ -26,3 +26,11 @@ export interface ProductMeasurementDto {
   size: string;      
   value: number;    
 }
+
+export interface ProductInput {
+  material?: string;
+  neckType?: string; 
+  fitting?: string;  
+  color?: string;    
+  size?: string;     
+}

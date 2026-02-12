@@ -1,11 +1,11 @@
 export interface ProductDto {
-  id: string;
-  sku: string;
-  price: number;
+  id: string;              
   name: string;
+  sku: string;
+  price: number;            
   mainImageUrl: string;
-  hasStock: boolean;         
-  availableColors: string[];
+  availableColors: string[]; 
+  hasStock: boolean;        
 }
 
 export interface GetProductsResponse {

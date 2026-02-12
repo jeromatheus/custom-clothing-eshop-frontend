@@ -1,8 +1,9 @@
-import { Carousel, Row, Col } from "react-bootstrap"; 
+import { Carousel, Row, Col } from "react-bootstrap";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 import { useFeaturedProducts } from "../hooks/useFeaturedProducts";
 import type { ProductDto } from "../types/product.types";
-import SpecificProductCard from "./SpecificProductCard"; 
-import 'react-loading-skeleton/dist/skeleton.css';
+import SpecificProductCard from "./SpecificProductCard";
 import styles from "./FeaturedProducts.module.css";
 
 interface FeaturedProductsProps {
@@ -10,18 +11,51 @@ interface FeaturedProductsProps {
   loading?: boolean;
 }
 
-const FeaturedProducts = ({ products, loading }: FeaturedProductsProps) => {
-  const { 
-    slides, 
-    visibleCount, 
-    toggleFavorite, 
-    handleProductSelect 
-  } = useFeaturedProducts(products); 
+const FeaturedProductsSkeleton = ({ count }: { count: number }) => {
+  return (
+    <div className={styles.root}>
+      <Row className="g-0 d-flex w-100 m-0 justify-content-center">
+        {Array(count)
+          .fill(0)
+          .map((_, index) => (
+            <Col
+              key={`skeleton-${index}`}
+              className={styles.productCol}
+              style={{
+                flex: `0 0 ${100 / count}%`,
+                maxWidth: `${100 / count}%`,
+              }}
+            >
+              <div className="w-100 h-100 p-2 d-flex flex-column">
+                <div style={{ aspectRatio: "1/1", marginBottom: "10px" }}>
+                  <Skeleton height="100%" borderRadius={8} />
+                </div>
+                <Skeleton height={20} className="mb-2" />
+                <Skeleton height={20} className="mb-3" />
+                <Skeleton height={40} borderRadius={4} />
+              </div>
+            </Col>
+          ))}
+      </Row>
+    </div>
+  );
+};
+
+const FeaturedProducts = ({
+  products,
+  loading = false,
+}: FeaturedProductsProps) => {
+  const { slides, visibleCount, toggleFavorite, handleProductSelect } =
+    useFeaturedProducts(products);
+
+  if (loading) {
+    return <FeaturedProductsSkeleton count={visibleCount || 4} />;
+  }
 
   if (!products || products.length === 0) return null;
-  
+
   return (
-    <div className={styles.root}>      
+    <div className={styles.root}>
       <Carousel
         interval={null}
         indicators={false}
@@ -33,7 +67,7 @@ const FeaturedProducts = ({ products, loading }: FeaturedProductsProps) => {
             <Row className="g-0 d-flex w-100 m-0 justify-content-center">
               {group.map((product) => (
                 <Col
-                  key={product.id || product.productId || index}
+                  key={product.id || product.id || index}
                   className={styles.productCol}
                   style={{
                     flex: `0 0 ${100 / visibleCount}%`,
