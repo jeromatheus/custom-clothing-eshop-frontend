@@ -1,0 +1,115 @@
+.customLabel {
+  flex-basis: 30%;
+  font-size: 1.1rem;
+}
+
+.customButtonGroup {
+  flex-basis: 70%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.customButtonGroup .buttonOption {
+  border-radius: 0;
+  margin: 0;
+  flex-grow: 1; 
+  flex-basis: 0;
+  width: 70px; 
+}
+
+.colorOption {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: var(--swatch-color); 
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.colorOption.selected {
+  transform: scale(1.15);
+  box-shadow: 0 0 0 2px white, 0 0 0 4px #7A9A92;
+}
+
+.sizeOption {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sizeOption.selected {
+  background-color: #212529; 
+  color: white;
+  border-color: #212529;
+}
+
+.sizeOption:hover:not(.selected) {
+  background-color: #f8f9fa;
+}
+
+.quantitySelect {
+  text-align: center;
+  flex-basis: 70%;
+}
+
+.quantitySelect.active {
+  border: 1px solid #7A9A92!important;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+.addToCartButton {
+  background: rgba(122, 154, 146, 0.3) !important; 
+  border: 1px solid rgba(122, 154, 146, 0.3) !important; 
+  color: #000 !important;     
+}
+
+.addToCartButton:hover {
+  background: rgba(122, 154, 146, 0.2) !important; 
+  border: 1px solid rgba(122, 154, 146, 0.2) !important; 
+  color: #000 !important;   
+  box-shadow: none !important;
+}
+
+.cartAlertSpan {
+  animation: fadeInHoldFadeOut 5s ease-in-out forwards;
+  position: absolute;
+  margin-top: 5px;
+  transform: translateX(8%);
+  color: gray;
+}
+
+@keyframes fadeInHoldFadeOut {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+
+.colorOption:hover, .sizeOption:hover, .customButtonGroup .buttonOption:hover{
+  transform: scale(1.1); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  z-index: 2;
+  transition: transform 0.2s ease, box-shadow 0.2s ease; 
+}
+
+.colorOption:active,
+.sizeOption:active,
+.customButtonGroup .buttonOption:active {
+  transform: scale(1.25); 
+}

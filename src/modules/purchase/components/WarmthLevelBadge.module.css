@@ -1,0 +1,23 @@
+.badgeContainer {
+  display: inline-flex;
+  gap: 4px;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 6px 10px;
+  border-radius: 20px;
+  backdrop-filter: blur(2px);
+}
+
+.fireIcon {
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.fireActive {
+  color: #ff4d00;
+  filter: drop-shadow(0 0 5px rgba(255, 77, 0, 0.6));
+  transform: scale(1.1);
+}
+
+.fireInactive {
+  color: rgba(255, 255, 255, 0.3);
+}

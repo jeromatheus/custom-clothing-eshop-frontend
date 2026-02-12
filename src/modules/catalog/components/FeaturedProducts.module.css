@@ -1,0 +1,32 @@
+.root {
+  margin-top: 2rem;
+}
+
+/* ESTRATEGIA PRO PARA BOOTSTRAP:
+   Anidamos :global dentro de nuestra clase local (.carousel).
+   Así modificamos SOLO las flechas de ESTE carrusel.
+*/
+.carousel :global(.carousel-control-prev),
+.carousel :global(.carousel-control-next) {
+  width: 5%; 
+  opacity: 1;
+}
+
+.carousel :global(.carousel-control-prev-icon),
+.carousel :global(.carousel-control-next-icon) {
+  background-color: rgb(121, 121, 121);
+  border-radius: 50%;
+  padding: 1.5rem; 
+  background-size: 50%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.carousel :global(.carousel-item) {
+  transition: transform 0.6s ease-in-out; 
+}
+
+.productCol {
+  padding: 0.25rem; 
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,1 @@
+export { default as ShippingCalculator } from './components/ShippingCalculator';

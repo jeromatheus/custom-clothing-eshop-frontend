@@ -1,0 +1,18 @@
+.imageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: whitesmoke;
+  border: 1px solid lightgray; 
+  height: 100%;
+}
+
+.guideImage {
+  max-height: 200px;
+  object-fit: contain;
+  padding: 0.5rem;
+}
+
+.tableContainer {
+  margin: 0;
+}
