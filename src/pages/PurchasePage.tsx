@@ -36,7 +36,7 @@ const PurchasePage = () => {
     data: catalogData, 
     loading: catalogLoading, 
     error: catalogError 
-  } = useCatalog('ShortSleeve');
+  } = useCatalog('ShortSleeve');  
 
   const { id } = useParams<{ id: string }>();
   const { 
@@ -44,9 +44,8 @@ const PurchasePage = () => {
     loading: productLoading, 
     error: productError 
   } = useProduct(id);
-  console.log(product);
+  // console.log(product);
   
-
   const [selectedModel, setSelectedModel] = useState("male");
   
   const handleModelChange = (value: string) => {
@@ -76,7 +75,7 @@ const PurchasePage = () => {
               key={selectedModel} 
               images={shirtImages}
               warmthLevel={product?.warmthLevel}
-              loading={productLoading}
+              loading={true}
             />
           </div>
           <ModelSelector 
@@ -106,7 +105,11 @@ const PurchasePage = () => {
           <ProductSpecsTable specs={specsData} />
         </Col>
         <Col lg={6} md={12}>
-          <ProductSizeTable data={sizesData} image="/size-chart.jpg" />
+          <ProductSizeTable
+            data={sizesData}
+            image="/size-chart.jpg" 
+            loading={productLoading}
+          />
         </Col>
       </Row>
     </Container>
@@ -114,164 +117,3 @@ const PurchasePage = () => {
 };
 
 export default PurchasePage;
-
-
-
-const ALL_PRODUCTS = [
-  {
-    productId: 1011,
-    name: "Remera Waffle",
-    price: 13500.00,
-    type: "ShortSleeve",
-    colorVariants: [
-      {
-        color: "Beige",
-        variantId: 1011_1,
-        stock: 2,
-        imageA: "https://placehold.co/600x600?text=Remera+Waffle+Beige+Frente",
-        imageB: "https://placehold.co/600x600?text=Remera+Waffle+Beige+Dorso",
-        availableSizes: ["S", "M", "L", "XL"],
-      },
-      {
-        color: "Olive",
-        variantId: 1011_2,
-        stock: 2,
-        imageA: "https://placehold.co/600x600?text=Remera+Waffle+Olive+Frente",
-        imageB: "https://placehold.co/600x600?text=Remera+Waffle+Olive+Dorso",
-        availableSizes: ["S", "M", "L", "XL"],
-      },
-      {
-        color: "Black",
-        variantId: 1011_3,
-        stock: 1,
-        imageA: "https://placehold.co/600x600?text=Remera+Waffle+Black+Frente",
-        imageB: "https://placehold.co/600x600?text=Remera+Waffle+Black+Dorso",
-        availableSizes: ["S", "M", "L", "XL"],
-      }
-    ],
-  },
-
-  {
-    productId: 1012,
-    name: "Remera Slim Fit",
-    price: 11000.00,
-    type: "ShortSleeve",
-    colorVariants: [
-      {
-        color: "Black",
-        variantId: 1012_1,
-        stock: 1,
-        imageA: "https://placehold.co/600x600?text=Remera+Slim+Fit+Black+Frente",
-        imageB: "https://placehold.co/600x600?text=Remera+Slim+Fit+Black+Dorso",
-        availableSizes: ["S", "M", "L", "XL"],
-      },
-      {
-        color: "White",
-        variantId: 1012_2,
-        stock: 1,
-        imageA: "https://placehold.co/600x600?text=Remera+Slim+Fit+White+Frente",
-        imageB: "https://placehold.co/600x600?text=Remera+Slim+Fit+White+Dorso",
-        availableSizes: ["S", "M", "L", "XL"],
-      },
-      {
-        color: "Navy",
-        variantId: 1012_3,
-        stock: 1,
-        imageA: "https://placehold.co/600x600?text=Remera+Slim+Fit+Navy+Frente",
-        imageB: "https://placehold.co/600x600?text=Remera+Slim+Fit+Navy+Dorso",
-        availableSizes: ["S", "M", "L", "XL"],
-      }
-    ],
-  },
-
-  {
-    productId: 1013,
-    name: "Musculosa Morley",
-    price: 10000.00,
-    type: "Sleeveless",
-    colorVariants: [
-      {
-        color: "White",
-        variantId: 1013_1,
-        stock: 3,
-        imageA: "https://placehold.co/600x600?text=Musculosa+Morley+White+Frente",
-        imageB: "https://placehold.co/600x600?text=Musculosa+Morley+White+Dorso",
-        availableSizes: ["S", "M", "L", "XL"],
-      },
-      {
-        color: "Gray",
-        variantId: 1013_2,
-        stock: 3,
-        imageA: "https://placehold.co/600x600?text=Musculosa+Morley+Gray+Frente",
-        imageB: "https://placehold.co/600x600?text=Musculosa+Morley+Gray+Dorso",
-        availableSizes: ["S", "M", "L", "XL"],
-      },
-      {
-        color: "Black",
-        variantId: 1013_3,
-        stock: 3,
-        imageA: "https://placehold.co/600x600?text=Musculosa+Morley+Black+Frente",
-        imageB: "https://placehold.co/600x600?text=Musculosa+Morley+Black+Dorso",
-        availableSizes: ["S", "M", "L", "XL"],
-      }
-    ],
-  },
-
-  {
-    productId: 1014,
-    name: "Pack x3 Medias",
-    price: 7200.00,
-    type: "Underwear",
-    colorVariants: [
-      {
-        color: "White",
-        variantId: 1014_1,
-        stock: 1,
-        imageA: "https://placehold.co/600x600?text=Pack+x3+Medias+White+Frente",
-        imageB: "https://placehold.co/600x600?text=Pack+x3+Medias+White+Dorso",
-        availableSizes: ["S", "M", "L", "XL"],
-      },
-      {
-        color: "Gray",
-        variantId: 1014_2,
-        stock: 0,
-        imageA: "https://placehold.co/600x600?text=Pack+x3+Medias+Gray+Frente",
-        imageB: "https://placehold.co/600x600?text=Pack+x3+Medias+Gray+Dorso",
-        availableSizes: ["S", "M", "L", "XL"],
-      },
-      {
-        color: "Black",
-        variantId: 1014_3,
-        stock: 0,
-        imageA: "https://placehold.co/600x600?text=Pack+x3+Medias+Black+Frente",
-        imageB: "https://placehold.co/600x600?text=Pack+x3+Medias+Black+Dorso",
-        availableSizes: ["S", "M", "L", "XL"],
-      }
-    ],
-  },
-
-  {
-    productId: 1017,
-    name: "Jogging Oversize",
-    price: 22000.00,
-    type: "Pants",
-    colorVariants: [
-      {
-        color: "Black",
-        variantId: 1017_1,
-        stock: 2,
-        imageA: "https://placehold.co/600x600?text=Jogging+Oversize+Black+Frente",
-        imageB: "https://placehold.co/600x600?text=Jogging+Oversize+Black+Dorso",
-        availableSizes: ["S", "M", "L", "XL"],
-      },
-      {
-        color: "Gray",
-        variantId: 1017_2,
-        stock: 2,
-        imageA: "https://placehold.co/600x600?text=Jogging+Oversize+Gray+Frente",
-        imageB: "https://placehold.co/600x600?text=Jogging+Oversize+Gray+Dorso",
-        availableSizes: ["S", "M", "L", "XL"],
-      }
-    ],
-  }
-];

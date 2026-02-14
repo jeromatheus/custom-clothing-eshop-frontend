@@ -1,5 +1,6 @@
 import { Table, Row, Col } from "react-bootstrap";
 import { SectionWrapper } from "../../../shared/components/SectionWrapper";
+import Skeleton from "react-loading-skeleton"; 
 import styles from "./ProductSizeTable.module.css"; 
 
 interface SizeData {
@@ -10,16 +11,36 @@ interface ProductSizeTableProps {
   data: SizeData[];
   columns?: string[]; 
   image?: string;
+  loading?: boolean;
 }
 
 const DEFAULT_COLS = ["Talle", "Pecho", "Largo", "Mangas"];
 const DEFAULT_IMG = "/placeholder.png"; 
 
+  const ProductSizeTableSkeleton = () => (
+    <SectionWrapper title="Tabla de talles">
+      <Row className="align-items-stretch">
+        <Col md={3} className="p-0">
+          <Skeleton height="100%" borderRadius={0} />
+        </Col>
+        <Col md={9} className="p-0 h-100">
+          <Skeleton count={4} height="25%" borderRadius={0} />
+        </Col>
+      </Row>        
+    </SectionWrapper>
+  );
+
 const ProductSizeTable = ({
   data,
   columns = DEFAULT_COLS,
   image = DEFAULT_IMG,
+  loading = true,
 }: ProductSizeTableProps) => {
+
+  if (loading) {
+    return <ProductSizeTableSkeleton />;
+  }  
+  
   return (
     <SectionWrapper title="Tabla de talles">
       <Row className="align-items-stretch">        

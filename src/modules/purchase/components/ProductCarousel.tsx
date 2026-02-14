@@ -26,7 +26,7 @@ const CarouselSkeleton = () => (
       <Skeleton count={4} height={120} borderRadius={4} />
     </Col>
     <Col xs={10} className="">
-      <Skeleton height="100" borderRadius={0} />
+      <Skeleton height="100%" borderRadius={0} />
     </Col>
   </Row>
 );
