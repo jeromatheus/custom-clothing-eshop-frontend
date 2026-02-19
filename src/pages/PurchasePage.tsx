@@ -44,7 +44,7 @@ const PurchasePage = () => {
     loading: productLoading, 
     error: productError 
   } = useProduct(id);
-  // console.log(product);
+  console.log(product);
   
   const [selectedModel, setSelectedModel] = useState("male");
   

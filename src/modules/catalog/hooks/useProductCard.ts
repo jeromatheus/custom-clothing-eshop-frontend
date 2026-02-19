@@ -48,7 +48,7 @@ export const useProductCard = (product: ProductDto, handlers: ProductCardHandler
     },
     data: {
       id: product.id,
-      name: product.name || product.sku, 
+      name: product.name, 
       price: product.price,
       transferPrice,
       hasStock: product.hasStock,      

@@ -1,6 +1,6 @@
 export interface ProductDto {
   name: string;
-  sku: string;
+  id: string;
   price: number;            
   mainImageUrl: string;
   availableColors: string[]; 

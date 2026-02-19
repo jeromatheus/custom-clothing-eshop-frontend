@@ -1,6 +1,5 @@
 export interface ProductDetailDto {
   id: string;
-  sku: string;       
   price: number;
   type: string;      
   imageGroups: ProductImageGroupDto[];

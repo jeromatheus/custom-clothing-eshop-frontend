@@ -67,7 +67,7 @@ const FeaturedProducts = ({
             <Row className="g-0 d-flex w-100 m-0 justify-content-center">
               {group.map((product) => (
                 <Col
-                  key={product.sku || index}
+                  key={product.id || index}
                   className={styles.productCol}
                   style={{
                     flex: `0 0 ${100 / visibleCount}%`,
