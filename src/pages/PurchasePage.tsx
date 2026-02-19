@@ -36,7 +36,7 @@ const PurchasePage = () => {
     data: catalogData, 
     loading: catalogLoading, 
     error: catalogError 
-  } = useCatalog('ShortSleeve');  
+  } = useCatalog('ShortSleeveTShirt');  
 
   const { id } = useParams<{ id: string }>();
   const { 

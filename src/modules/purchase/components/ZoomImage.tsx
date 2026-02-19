@@ -1,7 +1,7 @@
 import { createPortal } from "react-dom";
 import styles from "./ZoomImage.module.css";
 import { useZoom } from "../hooks/useZoom";
-import { calculateLensStyle } from "../domain/zoomLogic";
+import { calculateLensStyle } from "../types/zoomLogic";
 
 interface ZoomableImageProps {
   src: string;
