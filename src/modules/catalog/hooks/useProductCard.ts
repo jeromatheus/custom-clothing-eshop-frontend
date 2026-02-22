@@ -1,15 +1,15 @@
 import { useState, type MouseEvent } from "react";
 import { calculateTransferPrice } from "../../../shared/utils/prices";
 import { useFavorites } from "../../../context/FavoritesContext";
-import type { ProductVariantDto } from "../types/products"; 
+import type { FeaturedProductVariantDto } from "../types/FeaturedProductVariantDto"; 
 
 export interface ProductCardHandlers {
-  onFavoriteClick?: (product: ProductVariantDto) => void;
-  onGoToProducClick?: (product: ProductVariantDto) => void;
+  onFavoriteClick?: (product: FeaturedProductVariantDto) => void;
+  onGoToProducClick?: (product: FeaturedProductVariantDto) => void;
   onColorSelect?: (id: string, color: string) => void;
 }
 
-export const useProductCard = (product: ProductVariantDto, handlers: ProductCardHandlers) => {
+export const useProductCard = (product: FeaturedProductVariantDto, handlers: ProductCardHandlers) => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
   

@@ -1,13 +1,13 @@
 import { Card, Button } from "react-bootstrap";
 import { ColorSwatches } from "./ColorSwatches";
 import { useProductCard } from "../hooks/useProductCard";
-import type { ProductVariantDto } from "../types/products";
+import type { FeaturedProductVariantDto } from "../types/FeaturedProductVariantDto";
 import styles from "./SpecificProductCard.module.css";
 
 interface SpecificProductCardProps {
-  product: ProductVariantDto;
-  onFavoriteClick?: (product: ProductVariantDto) => void;
-  onGoToProducClick?: (product: ProductVariantDto) => void;
+  product: FeaturedProductVariantDto;
+  onFavoriteClick?: (product: FeaturedProductVariantDto) => void;
+  onGoToProducClick?: (product: FeaturedProductVariantDto) => void;
   onColorSelect?: (color: string) => void;
 }
 

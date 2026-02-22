@@ -2,19 +2,19 @@ import { useMemo, useCallback } from "react";
 import { useFavorites } from "../../../context/FavoritesContext";
 import { useResponsiveVisibleCount } from "../hooks/useResponsiveVisibleCount";
 import { useNavigate } from 'react-router-dom';
-import type { ProductVariantDto } from "../types/products";
+import type { FeaturedProductVariantDto } from "../types/FeaturedProductVariantDto";
 import type { Product } from "../../../shared/domain/product";
 
-export const useFeaturedProducts = (products: ProductVariantDto[]) => {
+export const useFeaturedProducts = (products: FeaturedProductVariantDto[]) => {
   const visibleCount = useResponsiveVisibleCount();
   const navigate = useNavigate();
   const { toggleFavorite: toggleFavContext } = useFavorites();
 
-  const toggleFavorite = useCallback((product: ProductVariantDto) => {
+  const toggleFavorite = useCallback((product: FeaturedProductVariantDto) => {
     toggleFavContext(product as unknown as Product);
   }, [toggleFavContext]);
 
-  const handleProductSelect = useCallback((product: ProductVariantDto) => {
+  const handleProductSelect = useCallback((product: FeaturedProductVariantDto) => {
     alert(product.id)
     navigate(`/purchase/${product.id}`);
     window.scrollTo({ top: 0, behavior: "smooth" });

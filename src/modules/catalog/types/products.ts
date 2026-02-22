@@ -16,22 +16,3 @@ export interface ProductInput {
   colors?: string[];
   [key: string]: any;
 }
-
-export interface ProductVariantDto {
-  name: string;
-  id: string;
-  price: number;            
-  mainImageUrl: string;
-  colors: ColorVariantSummaryDto[];
-  hasStock: boolean;        
-}
-
-export interface ColorVariantSummaryDto {
-  variantId: string;
-  colorName: string;
-  imageUrl: string;
-}
-
-export interface GetProductsResponse {
-  products: ProductVariantDto[]; 
-}

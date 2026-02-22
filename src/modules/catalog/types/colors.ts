@@ -8,12 +8,6 @@ export interface ColorVariantDto {
   availableSizes?: string[]; 
 }
 
-export interface ColorVariantSummaryDto {
-  variantId: string;
-  colorName: string;
-  imageUrl: string;
-}
-
 // Record<string, string> asegura que es un objeto clave-valor de strings
 export const COLOR_MAP: Record<string, string> = {
   Black: "#000000",
