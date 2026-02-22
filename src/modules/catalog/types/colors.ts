@@ -1,11 +1,17 @@
 
-export interface ColorVariant {
+export interface ColorVariantDto {
   variantId: string | number; 
   color: string;
   imageA: string;
   imageB: string;
   stock: number;
   availableSizes?: string[]; 
+}
+
+export interface ColorVariantSummaryDto {
+  variantId: string;
+  colorName: string;
+  imageUrl: string;
 }
 
 // Record<string, string> asegura que es un objeto clave-valor de strings

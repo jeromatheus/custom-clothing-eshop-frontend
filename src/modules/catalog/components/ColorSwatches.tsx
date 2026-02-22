@@ -1,9 +1,10 @@
 import { type MouseEvent } from "react";
 import { getColorHex } from "../types/colors"; 
+import { type ColorVariantSummaryDto } from "../types/colors"; 
 import styles from "./ColorSwatches.module.css"; 
 
 interface ColorSwatchesProps {
-  colors: string[];
+  colors: ColorVariantSummaryDto[]; 
   selectedColor?: string | null;
   onColorSelect: (color: string) => void;
 }
@@ -15,10 +16,12 @@ export const ColorSwatches = ({
 }: ColorSwatchesProps) => {
   
   if (!colors || colors.length === 0) return null;
-
+  
   return (
     <div className={styles.overlay}>
-      {colors.map((colorName) => {
+      {colors.map((colorVariant) => {
+
+        const colorName = colorVariant.colorName; 
         const hexColor = getColorHex(colorName);
         
         const borderStyle = colorName.toLowerCase() === 'white' 
@@ -28,7 +31,7 @@ export const ColorSwatches = ({
 
         return (
           <button
-            key={colorName}
+            key={colorVariant.variantId} 
             className={`${styles.swatch} ${isSelected ? styles.selected : ""}`}
             style={{ 
               backgroundColor: hexColor, 

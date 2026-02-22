@@ -44,7 +44,6 @@ const PurchasePage = () => {
     loading: productLoading, 
     error: productError 
   } = useProduct(id);
-  console.log(product);
   
   const [selectedModel, setSelectedModel] = useState("male");
   
@@ -70,7 +69,7 @@ const PurchasePage = () => {
       
       <Row className="mx-3 align-items-stretch">
         <Col lg={8} md={12} className="d-flex flex-column">          
-          <div className="flex-grow-1" style={{ minHeight: 0}}>
+          {/* <div className="flex-grow-1" style={{ minHeight: 0}}>
             <ProductCarousel
               key={selectedModel} 
               images={shirtImages}
@@ -82,7 +81,7 @@ const PurchasePage = () => {
             options={MODEL_OPTIONS}
             selectedId={selectedModel}
             onSelect={handleModelChange}
-          />
+          /> */}
           <ShippingCalculator />
         </Col>
 

@@ -1,5 +1,5 @@
 import { useFetch } from '../../../shared/hooks/useFetch'; 
-import { type GetProductsResponse } from '../types/product.types';
+import { type GetProductsResponse } from '../types/products';
 
 export const useCatalog = (productType: string) => {
   // 1. Construimos la URL específica del negocio

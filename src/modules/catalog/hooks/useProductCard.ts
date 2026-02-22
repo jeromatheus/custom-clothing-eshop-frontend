@@ -1,21 +1,21 @@
 import { useState, type MouseEvent } from "react";
 import { calculateTransferPrice } from "../../../shared/utils/prices";
 import { useFavorites } from "../../../context/FavoritesContext";
-import type { ProductDto } from "../types/product.types"; 
+import type { ProductVariantDto } from "../types/products"; 
 
 export interface ProductCardHandlers {
-  onFavoriteClick?: (product: ProductDto) => void;
-  onGoToProducClick?: (product: ProductDto) => void;
+  onFavoriteClick?: (product: ProductVariantDto) => void;
+  onGoToProducClick?: (product: ProductVariantDto) => void;
   onColorSelect?: (id: string, color: string) => void;
 }
 
-export const useProductCard = (product: ProductDto, handlers: ProductCardHandlers) => {
+export const useProductCard = (product: ProductVariantDto, handlers: ProductCardHandlers) => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
   
   const { isFavorite } = useFavorites();
 
-  const availableColors = product.availableColors || [];
+  const availableColors = product.colors;
 
   const currentImage = product.mainImageUrl;
   

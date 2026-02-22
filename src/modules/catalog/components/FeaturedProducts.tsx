@@ -2,12 +2,12 @@ import { Carousel, Row, Col } from "react-bootstrap";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { useFeaturedProducts } from "../hooks/useFeaturedProducts";
-import type { ProductDto } from "../types/product.types";
+import type { ProductVariantDto } from "../types/products";
 import SpecificProductCard from "./SpecificProductCard";
 import styles from "./FeaturedProducts.module.css";
 
 interface FeaturedProductsProps {
-  products: ProductDto[];
+  products: ProductVariantDto[];
   loading?: boolean;
 }
 
