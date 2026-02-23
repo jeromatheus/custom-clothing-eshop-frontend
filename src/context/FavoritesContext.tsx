@@ -30,12 +30,12 @@ export const FavoritesContextProvider = ({ children }: FavoritesProviderProps) =
 
   const toggleFavorite = useCallback((product: Product) => {
     setFavorites((prev) => {
-      const isFavorited = prev.some(item => String(item.id) === String(product.id));
-      if (isFavorited) {
-        return prev.filter(item => String(item.id) !== String(product.id));
-      } else {
-        return [...prev, product];
+      // Si ya existe, lo filtramos (lo quitamos)
+      if (prev.some(item => item.id === product.id)) {
+        return prev.filter(item => item.id !== product.id);
       }
+      // Si no existe, lo agregamos
+      return [...prev, product];
     });
   }, [setFavorites]);
 

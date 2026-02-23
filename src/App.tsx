@@ -1,7 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom'; 
 import PurchasePage from './pages/PurchasePage';
 import { CartContextProvider } from './context/CartContext';
-import { FormContextProvider } from './context/FormContext';
 import { FavoritesContextProvider } from './context/FavoritesContext';
 import 'react-loading-skeleton/dist/skeleton.css';
 import MainLayout from './layout/MainLayout'; 
@@ -12,15 +11,13 @@ function App() {
   return (
     <FavoritesContextProvider>
       <CartContextProvider>
-        <FormContextProvider>
-          <MainLayout>
-            <Routes>
-              <Route path="/" element={<Navigate to={`/product/${DEFAULT_PRODUCT_ID}`} replace />} />
-              <Route path="/product/:id" element={<PurchasePage />} />
-              <Route path="*" element={<Navigate to="/" replace />} />
-            </Routes>
-          </MainLayout>
-        </FormContextProvider>
+        <MainLayout>
+          <Routes>
+            <Route path="/" element={<Navigate to={`/product/${DEFAULT_PRODUCT_ID}`} replace />} />
+            <Route path="/product/:id" element={<PurchasePage />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </MainLayout>
       </CartContextProvider>
     </FavoritesContextProvider>
   );
