@@ -1,4 +1,4 @@
-import type { ShippingRate } from '../domain/types';
+import type { ShippingRate } from '../domain/shipping';
 
 export const SHIPPING_RATES = [
   {

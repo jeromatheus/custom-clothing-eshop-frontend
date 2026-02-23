@@ -1,5 +1,5 @@
 import { type MouseEvent } from "react";
-import { getColorHex } from "../types/colors"; 
+import { getColorHex } from "../../../shared/utils/colors"; 
 import { type ColorVariantSummaryDto } from "../types/FeaturedProductVariantDto"; 
 import styles from "./ColorSwatches.module.css"; 
 

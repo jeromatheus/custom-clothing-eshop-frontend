@@ -1,15 +1,13 @@
 import { Container, Row, Col } from "react-bootstrap"; 
 import { useState } from "react";
-import { 
-  ProductCarousel, 
-  ModelSelector, 
-  ProductForm,
-  ProductSpecsTable,
-  ProductSizeTable
-} from "../modules/purchase";
-import { ShippingCalculator } from "../modules/shipping";
+import ProductCarousel from "../modules/purchase/components/ProductCarousel";
+import ModelSelector from "../modules/purchase/components/ModelSelector";
+import ProductForm from "../modules/purchase/components/ProductForm";
+import ProductSpecsTable from "../modules/purchase/components/ProductSpecsTable";
+import ProductSizeTable from "../modules/purchase/components/ProductSizeTable";
+import ShippingCalculator from "../modules/shipping/components/ShippingCalculator";
+import FeaturedProducts from "../modules/catalog/components/FeaturedProducts"; 
 import { CommonBreadcrumbs } from "../shared/components/Breadcrumbs"; 
-import { FeaturedProducts } from "../modules/catalog"; 
 import { BREADCRUMB_ITEMS } from "../shared/constants/routing"; 
 import { SHIRT_FORM_CONFIG, MODEL_OPTIONS } from "../shared/constants/filters"; 
 import { useCatalog } from "../modules/catalog/hooks/useCatalog";

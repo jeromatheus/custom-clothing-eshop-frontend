@@ -1,7 +1,7 @@
 import { cloneElement, type ReactElement } from "react";
 import { Button, Modal, Form, Row, Alert } from "react-bootstrap";
 import { useShippingCalculator } from "../hooks/useShippingCalculator";
-import type { ShippingResult } from "../domain/types";
+import type { ShippingResult } from "../../../shared/domain/shipping";
 
 interface ShippingCalculatorProps {
   trigger?: ReactElement;

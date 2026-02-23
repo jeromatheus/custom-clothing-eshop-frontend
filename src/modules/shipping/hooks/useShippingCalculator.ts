@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { findShippingRateByCP } from '../../../shared/constants/shippingRepository';
-import { formatCurrency } from '../domain/currency';
-import type { ShippingRate, ShippingResult } from '../domain/types';
+import { formatCurrency } from '../../../shared/utils/prices';
+import type { ShippingRate, ShippingResult } from '../../../shared/domain/shipping';
 
 interface UseShippingCalculatorParams {
   currentCost?: string; 

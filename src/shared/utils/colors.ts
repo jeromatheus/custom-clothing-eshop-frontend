@@ -1,13 +1,3 @@
-
-export interface ColorVariantDto {
-  variantId: string | number; 
-  color: string;
-  imageA: string;
-  imageB: string;
-  stock: number;
-  availableSizes?: string[]; 
-}
-
 // Record<string, string> asegura que es un objeto clave-valor de strings
 export const COLOR_MAP: Record<string, string> = {
   Black: "#000000",

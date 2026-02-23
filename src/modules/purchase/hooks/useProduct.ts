@@ -1,8 +1,8 @@
 import { useFetch } from '../../../shared/hooks/useFetch'; 
-import { type ProductDetailDto } from '../types/product.types';
+import { type ProductVariantDetailDto } from '../types/ProductVariantDetailDto';
 
 export const useProduct = (productId: string | undefined) => {
   const endpoint = productId ? `/products/${productId}` : '';
-  const result = useFetch<ProductDetailDto>(endpoint);
+  const result = useFetch<ProductVariantDetailDto>(endpoint);
   return result;
 };

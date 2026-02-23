@@ -1,1 +1,0 @@
-export { default as FeaturedProducts } from './components/FeaturedProducts';
