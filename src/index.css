@@ -41,7 +41,7 @@
   color: white!important;
   box-shadow: none!important;
 }
-
+/* 
 .breadcrumb {
   font-size: 1.15rem!important;    
   margin-bottom: 0!important; 
@@ -88,4 +88,4 @@
 
 .accordion-dark .accordion-button::after {
   filter: invert(0);
-}
+} */

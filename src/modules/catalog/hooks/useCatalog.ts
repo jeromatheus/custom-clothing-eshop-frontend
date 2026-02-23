@@ -1,5 +1,5 @@
 import { useFetch } from '../../../shared/hooks/useFetch'; 
-import { type FeaturedProductVariantDto } from '../types/FeaturedProductVariantDto';
+import { type FeaturedProductVariantDto } from '../interfaces';
 
 
 export interface GetProductVariantsResponse {

@@ -1,5 +1,5 @@
 import { useFetch } from '../../../shared/hooks/useFetch'; 
-import { type ProductVariantDetailDto } from '../types/ProductVariantDetailDto';
+import { type ProductVariantDetailDto } from '../interfaces';
 
 export const useProduct = (productId: string | undefined) => {
   const endpoint = productId ? `/products/${productId}` : '';

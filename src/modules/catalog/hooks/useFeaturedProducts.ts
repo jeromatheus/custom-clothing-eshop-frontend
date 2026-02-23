@@ -2,7 +2,7 @@ import { useMemo, useCallback } from "react";
 import { useFavorites } from "../../../context/FavoritesContext";
 import { useResponsiveVisibleCount } from "../hooks/useResponsiveVisibleCount";
 import { useNavigate } from 'react-router-dom';
-import type { FeaturedProductVariantDto } from "../types/FeaturedProductVariantDto";
+import type { FeaturedProductVariantDto } from "../interfaces";
 import type { Product } from "../../../shared/domain/product";
 
 export const useFeaturedProducts = (products: FeaturedProductVariantDto[]) => {

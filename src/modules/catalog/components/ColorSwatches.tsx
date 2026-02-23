@@ -1,6 +1,6 @@
 import { type MouseEvent } from "react";
 import { getColorHex } from "../../../shared/utils/colors"; 
-import { type ColorVariantSummaryDto } from "../types/FeaturedProductVariantDto"; 
+import { type ColorVariantSummaryDto } from "../interfaces"; 
 import styles from "./ColorSwatches.module.css"; 
 
 interface ColorSwatchesProps {

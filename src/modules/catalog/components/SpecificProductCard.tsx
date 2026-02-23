@@ -1,7 +1,7 @@
 import { Card, Button } from "react-bootstrap";
 import { ColorSwatches } from "./ColorSwatches";
 import { useProductCard } from "../hooks/useProductCard";
-import type { FeaturedProductVariantDto } from "../types/FeaturedProductVariantDto";
+import type { FeaturedProductVariantDto } from "../interfaces";
 import styles from "./SpecificProductCard.module.css";
 
 interface SpecificProductCardProps {

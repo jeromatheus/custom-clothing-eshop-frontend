@@ -1,5 +1,5 @@
 import { useState, useEffect, type MouseEvent } from 'react';
-import type { LensPosition } from '../types/zoomLogic'; 
+import type { LensPosition } from '../../../shared/utils/zoom'; 
 
 export const useZoom = (src: string) => {
   const [isModalOpen, setIsModalOpen] = useState(false);

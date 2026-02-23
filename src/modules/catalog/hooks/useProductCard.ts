@@ -1,7 +1,7 @@
 import { useState, type MouseEvent } from "react";
 import { calculateTransferPrice } from "../../../shared/utils/prices";
 import { useFavorites } from "../../../context/FavoritesContext";
-import type { FeaturedProductVariantDto } from "../types/FeaturedProductVariantDto"; 
+import type { FeaturedProductVariantDto } from "../interfaces"; 
 
 export interface ProductCardHandlers {
   onFavoriteClick?: (product: FeaturedProductVariantDto) => void;
