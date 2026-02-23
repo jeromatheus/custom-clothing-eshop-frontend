@@ -66,9 +66,8 @@ export interface ProductFilters {
   size?: string;
   color?: string;
   material?: string;
-  fitting?: string;
+  fitType?: string;
   neckType?: string;
-  
   // Campos fijos
   quantity: number;
   [key: string]: string | number | undefined;

@@ -38,11 +38,11 @@ const PurchasePage = () => {
 
   const { id } = useParams<{ id: string }>();
   const { 
-    data: product, 
+    data: productData, 
     loading: productLoading, 
     error: productError 
   } = useGetProductById(id);
-  console.log(product);
+  console.log(productData);
   
   
   const [selectedModel, setSelectedModel] = useState("male");
@@ -87,7 +87,7 @@ const PurchasePage = () => {
 
         <Col lg={4} md={12}>
           <h2 className="display-5 mb-3 fw-semibold text-uppercase">Remera Mangas Largas</h2>     
-          <ProductForm config={SHIRT_FORM_CONFIG}/>
+          <ProductForm config={SHIRT_FORM_CONFIG} product={productData?.product} />
         </Col>
       </Row>
 

@@ -4,14 +4,12 @@ export const MODEL_OPTIONS = [
     name: "Hombre", 
     heightInfo: "185",
     sizeInfo: "L",
-    // imageUrl: maleThumb
   },
   { 
     id: "female", 
     name: "Mujer", 
     heightInfo: "165",
     sizeInfo: "M",
-    // imageUrl: femaleThumb 
   }
 ];
 
@@ -56,16 +54,17 @@ export const MATERIALS = {
   label: "Material",
   type: "button",
   options: [
-    { value: "Algodón", label: "Algodón" },
-    { value: "Morley", label: "Morley" },
-    { value: "Waffle", label: "Waffle" },
-    { value: "Poliéster", label: "Poliéster" },
-    { value: "Spandex", label: "Spandex" },
+    { value: "Cotton", label: "Algodón" },
+    { value: "Polyester", label: "Poliéster" },
+    { value: "Silk", label: "Seda" },
+    // { value: "Morley", label: "Morley" },
+    // { value: "Waffle", label: "Waffle" },
+    // { value: "Spandex", label: "Spandex" },
   ],
 };
 
-export const FITTINGS = {
-  id: "fitting",
+export const FIT_TYPES = {
+  id: "fitType",
   label: "Calce",
   type: "button",
   options: [
@@ -80,9 +79,9 @@ export const NECK_TYPES = {
   label: "Cuello",
   type: "button",
   options: [
-    { value: "Redondo", label: "Redondo" },
-    { value: "En V", label: "En V" },
-    { value: "Mao", label: "Mao" },
+    { value: "CrewNeck", label: "Redondo" },
+    { value: "VNeck", label: "En V" },
+    { value: "Polo", label: "Polo" },
   ],
 };
 
@@ -97,45 +96,17 @@ export const POLO_TYPES = {
   ],
 };
 
-export const UNDERWEAR_MATERIALS = {
-  id: "unerwear_material",
-  label: "Material",
-  type: "button",
-  options: [
-    { value: "Algodón", label: "Algodón" },
-    { value: "Poliéster", label: "Poliéster" },
-    { value: "Nylon", label: "Nylon" },
-  ],
-};
-
 export const FILTER_GROUPS = {
   category: CATEGORIES,
   size: SIZES,
   color: COLORS,
   material: MATERIALS,
-  fitting: FITTINGS,
+  fitType: FIT_TYPES,
   neckType: NECK_TYPES,
   type: POLO_TYPES,
 };
 
 export const SHIRT_FORM_CONFIG = {
   title: "Remera Manga Corta",
-  groups: [MATERIALS, NECK_TYPES, FITTINGS, COLORS, SIZES],
+  groups: [MATERIALS, NECK_TYPES, FIT_TYPES, COLORS, SIZES],
 };
-
-export const LONG_SLEEVE_FORM_CONFIG = {
-  title: "Remera Manga Larga",
-  groups: [MATERIALS, NECK_TYPES, FITTINGS, COLORS, SIZES],
-};
-
-export const UNDERWEAR_FORM_CONFIG = {
-  title: "Chombas",
-  groups: [POLO_TYPES, UNDERWEAR_MATERIALS, COLORS, SIZES],
-};
-
-export const SLEEVELESS_FORM_CONFIG = {
-  title: "Musculosa",
-  groups: [MATERIALS, FITTINGS, COLORS, SIZES],
-};
-
-export const ALL_PRODUCTS_FILTER_CONFIG = [CATEGORIES, SIZES, COLORS];

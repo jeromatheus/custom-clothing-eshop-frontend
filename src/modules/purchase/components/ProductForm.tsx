@@ -13,6 +13,7 @@ interface FilterGroupProps {
 
 interface ProductFormProps {
   config: ProductConfig;
+  product?: any; 
 }
 
 interface CustomCSSProperties extends CSSProperties {
@@ -76,7 +77,9 @@ const FilterGroup = ({ group, selectedValue, onChange }: FilterGroupProps) => {
   );
 };
 
-const ProductForm = ({ config }: ProductFormProps) => {
+const ProductForm = ({ config, product }: ProductFormProps) => {
+  console.log(product);
+  
   const { 
     filters, 
     handleFormChange, 
@@ -85,7 +88,7 @@ const ProductForm = ({ config }: ProductFormProps) => {
     showSuccessAlert, 
     isAdding, 
     loading 
-  } = useProductForm(config);
+  } = useProductForm(config, product); 
   if (!filters) return null;  // Renderizado defensivo
 
   return (

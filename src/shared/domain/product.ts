@@ -11,7 +11,7 @@ export interface Product {
   size?: string;
   color?: string;
   material?: string;
-  fitting?: string;
+  fitType?: string;
   neckType?: string;
   imageA?: string;
   imageB?: string;

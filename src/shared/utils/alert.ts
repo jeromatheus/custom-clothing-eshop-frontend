@@ -18,7 +18,7 @@ export function showSuccessToast(product: any): void {
              alt="${product.material || 'Producto'}" 
              style="width:45px; height:45px; border-radius:4px; object-fit:cover;" />
         <div style="font-size:14px; text-align:left;">
-          <strong>${product.material || 'Producto'} - ${product.fitting || ''}</strong><br/>
+          <strong>${product.material || 'Producto'} - ${product.fitType || ''}</strong><br/>
           Talle: ${product.size}
         </div>
       </div>
