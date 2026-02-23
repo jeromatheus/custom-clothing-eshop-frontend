@@ -1,4 +1,4 @@
-import { Container, Row, Col } from "react-bootstrap"; 
+import { Container, Row, Col } from "react-bootstrap";
 import { useState } from "react";
 import ProductCarousel from "../modules/purchase/components/ProductCarousel";
 import ModelSelector from "../modules/purchase/components/ModelSelector";
@@ -6,107 +6,94 @@ import ProductForm from "../modules/purchase/components/ProductForm";
 import ProductSpecsTable from "../modules/purchase/components/ProductSpecsTable";
 import ProductSizeTable from "../modules/purchase/components/ProductSizeTable";
 import ShippingCalculator from "../modules/shipping/components/ShippingCalculator";
-import FeaturedProducts from "../modules/catalog/components/FeaturedProducts"; 
-import { CommonBreadcrumbs } from "../shared/components/Breadcrumbs"; 
-import { BREADCRUMB_ITEMS } from "../shared/constants/routing"; 
-import { SHIRT_FORM_CONFIG, MODEL_OPTIONS } from "../shared/constants/filters"; 
+import FeaturedProducts from "../modules/catalog/components/FeaturedProducts";
+import { CommonBreadcrumbs } from "../shared/components/Breadcrumbs";
+import { BREADCRUMB_ITEMS } from "../shared/constants/routing";
+import { SHIRT_FORM_CONFIG, MODEL_OPTIONS } from "../shared/constants/filters";
 import { useGetFeaturedProductsByType } from "../modules/catalog/services/useGetFeaturedProductsByType";
 import { useGetProductById } from "../modules/purchase/services/useGetProductById";
-import { useParams } from 'react-router-dom';
-import placeholderImg from '../assets/placeholder.png';
-
+import { useParams } from "react-router-dom";
+import placeholderImg from "../assets/placeholder.png";
 
 const specsData = [
-    { label: "Material", value: "Algodón 100%" },
-    { label: "Peso", value: "150 g" },
-    { label: "Lavado", value: "A máquina, máximo 30°C" },
-    { label: "Origen", value: "Argentina" },
-  ];
-
-const sizesData = [
-  { talle: "S", pecho: "90 cm", largo: "65 cm", mangas: "20 cm" },
-  { talle: "M", pecho: "95 cm", largo: "67 cm", mangas: "21 cm" },
-  { talle: "L", pecho: "100 cm", largo: "70 cm", mangas: "22 cm" },
+  { label: "Material", value: "Algodón 100%" },
+  { label: "Peso", value: "150 g" },
+  { label: "Lavado", value: "A máquina, máximo 30°C" },
+  { label: "Origen", value: "Argentina" },
 ];
 
 const PurchasePage = () => {
-  const { 
-    data: catalogData, 
-    loading: catalogLoading, 
-    error: catalogError 
-  } = useGetFeaturedProductsByType('ShortSleeveTShirt');  
-
   const { id } = useParams<{ id: string }>();
-  const { 
-    data: productData, 
-    loading: productLoading, 
-    error: productError 
-  } = useGetProductById(id);
-  console.log(productData);
-  
-  
-  const [selectedModel, setSelectedModel] = useState("male");
-  
-  const handleModelChange = (value: string) => {
-    setSelectedModel(value);
-  };
 
-  const [shirtImages] = useState([
-    placeholderImg,
-    placeholderImg,
-    placeholderImg,
-  ]);
+  const { data: catalogData, loading: catalogLoading } = useGetFeaturedProductsByType("ShortSleeveTShirt");
+  const { data: productResponse, loading: productLoading } = useGetProductById(id);
 
+  const product = productResponse?.product;
 
-  // TODO: mantener altura equivalente entre columnas de la izquierda y de la derecha
+  const [selectedModelId, setSelectedModelId] = useState<string | null>(null);
+
+  const currentModel = product?.models.find(m => m.id === selectedModelId) || product?.models[0];
+  
+  const carouselImages = currentModel?.carouselImages || [];
+  const sizeChart = product?.sizeChart || [];
+  const similarProducts = catalogData?.products || [];
+
   return (
     <Container fluid className="px-0 px-md-5">
       <Row className="m-3">
         <Col xs={12}>
-          <CommonBreadcrumbs items={BREADCRUMB_ITEMS} />      
+          <CommonBreadcrumbs items={BREADCRUMB_ITEMS} />
         </Col>
-      </Row>      
-      
+      </Row>
+
       <Row className="mx-3 align-items-stretch">
-        <Col lg={8} md={12} className="d-flex flex-column">          
-          {/* <div className="flex-grow-1" style={{ minHeight: 0}}>
+        <Col lg={8} md={12} className="d-flex flex-column">
+          <div className="flex-grow-1">
             <ProductCarousel
-              key={selectedModel} 
-              images={shirtImages}
+              images={carouselImages}
+              loading={productLoading}
               warmthLevel={product?.warmthLevel}
-              loading={true}
             />
           </div>
-          <ModelSelector 
-            options={MODEL_OPTIONS}
-            selectedId={selectedModel}
-            onSelect={handleModelChange}
-          /> */}
+          
+          {/* {product?.models && (
+             <ModelSelector 
+                options={product.models} 
+                selectedId={currentModel?.id} 
+                onSelect={setSelectedModelId} 
+             />
+          )} */}
+
           <ShippingCalculator />
         </Col>
 
         <Col lg={4} md={12}>
-          <h2 className="display-5 mb-3 fw-semibold text-uppercase">Remera Mangas Largas</h2>     
-          <ProductForm config={SHIRT_FORM_CONFIG} product={productData?.product} />
+          <h2 className="display-5 mb-3 fw-semibold text-uppercase">
+            {product?.name || "Cargando..."}
+          </h2>
+          <ProductForm
+            config={SHIRT_FORM_CONFIG}
+            product={product}
+          />
         </Col>
       </Row>
 
       <Row className="m-3">
         <h2 className="display-7 mb-1 fw-semibold text-uppercase">Productos Similares</h2>
-        <FeaturedProducts 
-          products={catalogData?.products || []} 
+        <FeaturedProducts
+          products={similarProducts}
           loading={catalogLoading}
         />
-      </Row>  
-      
+      </Row>
+
       <Row className="m-3">
         <Col lg={6} md={12}>
           <ProductSpecsTable specs={specsData} />
         </Col>
         <Col lg={6} md={12}>
           <ProductSizeTable
-            data={sizesData}
-            image="/size-chart.jpg" 
+            data={sizeChart}
+            image="/size-chart.jpg"
             loading={productLoading}
           />
         </Col>

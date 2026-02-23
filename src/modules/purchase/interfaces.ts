@@ -1,5 +1,14 @@
+/**
+ * DTOs que vienen de la API
+ */
+
+// Esta es la interfaz clave para solucionar el error de "productData.product"
+export interface ProductResponse {
+  product: ProductVariantDetailDto;
+}
+
 export interface ProductVariantDetailDto {
-  id: string; 
+  id: string;
   name: string;
   price: number;
   garmentType: string;
@@ -40,18 +49,20 @@ export interface ModelDto {
   carouselImages: string[];
 }
 
-// -----------------------------
-
+// ---------------------------------------------------------
+/**
+ * Interfaces para la lógica del Formulario y Filtros
+ */
 
 export interface FilterOption {
   value: string | number;
   label: string;
-  hex?: string; 
+  hex?: string; // Para los círculos de colores
 }
 
 export interface FilterGroupData {
-  id: string;
-  label: string;
+  id: string; // Ej: 'color', 'size'
+  label: string; // Ej: 'Talle'
   type: 'size' | 'color' | 'button' | string;
   options: FilterOption[];
 }
@@ -60,15 +71,22 @@ export interface ProductConfig {
   groups: FilterGroupData[];
 }
 
-
 export interface ProductFilters {
-  // Campos dinámicos (coinciden con FilterGroupData.id)
-  size?: string;
-  color?: string;
-  material?: string;
-  fitType?: string;
-  neckType?: string;
-  // Campos fijos
+  // Coinciden con los IDs de FilterGroupData
+  size: string;
+  color: string;
+  material: string;
+  fitting: string; // Cambiado para matchear con useProductForm
+  neckType: string;
   quantity: number;
   [key: string]: string | number | undefined;
+}
+
+/**
+ * Interfaz para el Carrito (Lo que guardas en el Context)
+ */
+export interface CartItem extends Partial<ProductVariantDetailDto> {
+  size: string;
+  color: string;
+  quantity: number;
 }

@@ -1,49 +1,53 @@
 import { Table, Row, Col } from "react-bootstrap";
 import { SectionWrapper } from "../../../shared/components/SectionWrapper";
-import Skeleton from "react-loading-skeleton"; 
-import styles from "./ProductSizeTable.module.css"; 
+import Skeleton from "react-loading-skeleton";
+import styles from "./ProductSizeTable.module.css";
 
-interface SizeData {
-  [key: string]: string | number;
+interface ColumnConfig {
+  label: string;
+  key: string;
 }
 
 interface ProductSizeTableProps {
-  data: SizeData[];
-  columns?: string[]; 
+  data: any[];
   image?: string;
   loading?: boolean;
 }
 
-const DEFAULT_COLS = ["Talle", "Pecho", "Largo", "Mangas"];
-const DEFAULT_IMG = "/placeholder.png"; 
+const COLUMNS_CONFIG: ColumnConfig[] = [
+  { label: "Talle", key: "size" },
+  { label: "Pecho (cm)", key: "chest" },
+  { label: "Largo (cm)", key: "length" },
+  { label: "Cuello (cm)", key: "neck" },
+];
 
-  const ProductSizeTableSkeleton = () => (
-    <SectionWrapper title="Tabla de talles">
-      <Row className="align-items-stretch">
-        <Col md={3} className="p-0">
-          <Skeleton height="100%" borderRadius={0} />
-        </Col>
-        <Col md={9} className="p-0 h-100">
-          <Skeleton count={4} height="25%" borderRadius={0} />
-        </Col>
-      </Row>        
-    </SectionWrapper>
-  );
+const DEFAULT_IMG = "/size-chart.jpg";
+
+const ProductSizeTableSkeleton = () => (
+  <SectionWrapper title="Tabla de talles">
+    <Row className="align-items-stretch" style={{ height: "300px" }}>
+      <Col md={3} className="p-0">
+        <Skeleton height="100%" />
+      </Col>
+      <Col md={9} className="p-0">
+        <Skeleton count={5} height={50} className="mb-2" />
+      </Col>
+    </Row>
+  </SectionWrapper>
+);
 
 const ProductSizeTable = ({
-  data,
-  columns = DEFAULT_COLS,
+  data = [],
   image = DEFAULT_IMG,
-  loading = true,
+  loading = false,
 }: ProductSizeTableProps) => {
+  if (loading) return <ProductSizeTableSkeleton />;
 
-  if (loading) {
-    return <ProductSizeTableSkeleton />;
-  }  
-  
+  if (!data || data.length === 0) return null;
+
   return (
     <SectionWrapper title="Tabla de talles">
-      <Row className="align-items-stretch">        
+      <Row className="align-items-stretch">
         <Col md={3} className="p-0">
           <div className={styles.imageContainer}>
             <img
@@ -54,12 +58,18 @@ const ProductSizeTable = ({
           </div>
         </Col>
         <Col md={9} className="p-0">
-          <Table striped bordered hover responsive className="text-center h-100 m-0 mb-0">
+          <Table
+            striped
+            bordered
+            hover
+            responsive
+            className="text-center h-100 m-0"
+          >
             <thead className="table-dark">
               <tr>
-                {columns.map((col) => (
-                  <th key={col} className="fw-normal text-uppercase small">
-                    {col}
+                {COLUMNS_CONFIG.map((col) => (
+                  <th key={col.key} className="fw-normal text-uppercase small">
+                    {col.label}
                   </th>
                 ))}
               </tr>
@@ -67,10 +77,11 @@ const ProductSizeTable = ({
             <tbody>
               {data.map((row, rowIndex) => (
                 <tr key={rowIndex}>
-                  {columns.map((col) => {
-                    const key = col.toLowerCase();
-                    return <td key={col}>{row[key] ?? "-"}</td>;
-                  })}
+                  {COLUMNS_CONFIG.map((col) => (
+                    <td key={col.key}>
+                      {row[col.key] !== undefined ? row[col.key] : "-"}
+                    </td>
+                  ))}
                 </tr>
               ))}
             </tbody>
