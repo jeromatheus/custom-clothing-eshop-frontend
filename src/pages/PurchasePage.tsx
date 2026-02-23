@@ -10,8 +10,8 @@ import FeaturedProducts from "../modules/catalog/components/FeaturedProducts";
 import { CommonBreadcrumbs } from "../shared/components/Breadcrumbs"; 
 import { BREADCRUMB_ITEMS } from "../shared/constants/routing"; 
 import { SHIRT_FORM_CONFIG, MODEL_OPTIONS } from "../shared/constants/filters"; 
-import { useCatalog } from "../modules/catalog/hooks/useCatalog";
-import { useProduct } from "../modules/purchase/hooks/useProduct";
+import { useGetFeaturedProductsByType } from "../modules/catalog/services/useGetFeaturedProductsByType";
+import { useGetProductById } from "../modules/purchase/services/useGetProductById";
 import { useParams } from 'react-router-dom';
 import placeholderImg from '../assets/placeholder.png';
 
@@ -34,14 +34,16 @@ const PurchasePage = () => {
     data: catalogData, 
     loading: catalogLoading, 
     error: catalogError 
-  } = useCatalog('ShortSleeveTShirt');  
+  } = useGetFeaturedProductsByType('ShortSleeveTShirt');  
 
   const { id } = useParams<{ id: string }>();
   const { 
     data: product, 
     loading: productLoading, 
     error: productError 
-  } = useProduct(id);
+  } = useGetProductById(id);
+  console.log(product);
+  
   
   const [selectedModel, setSelectedModel] = useState("male");
   

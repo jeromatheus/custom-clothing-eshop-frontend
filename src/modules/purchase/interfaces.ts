@@ -39,3 +39,37 @@ export interface ModelDto {
   imageUrl: string;
   carouselImages: string[];
 }
+
+// -----------------------------
+
+
+export interface FilterOption {
+  value: string | number;
+  label: string;
+  hex?: string; 
+}
+
+export interface FilterGroupData {
+  id: string;
+  label: string;
+  type: 'size' | 'color' | 'button' | string;
+  options: FilterOption[];
+}
+
+export interface ProductConfig {
+  groups: FilterGroupData[];
+}
+
+
+export interface ProductFilters {
+  // Campos dinámicos (coinciden con FilterGroupData.id)
+  size?: string;
+  color?: string;
+  material?: string;
+  fitting?: string;
+  neckType?: string;
+  
+  // Campos fijos
+  quantity: number;
+  [key: string]: string | number | undefined;
+}

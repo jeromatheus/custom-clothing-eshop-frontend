@@ -1,6 +1,6 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import { useCart } from "../../../context/CartContext"; 
-import { type ProductFilters, type ProductConfig } from "../../../shared/domain/product";
+import { type ProductFilters, type ProductConfig } from "../interfaces";
 import { showSuccessToast } from "../../../shared/utils/alert";
 
 

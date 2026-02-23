@@ -6,7 +6,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 import MainLayout from './layout/MainLayout'; 
 
 function App() {
-  const DEFAULT_PRODUCT_ID = "fcab721f-289d-405a-8377-20bfd85b4efa";
+  const DEFAULT_PRODUCT_ID = "22222222-0000-0000-0000-00000000000A";
 
   return (
     <FavoritesContextProvider>

@@ -6,7 +6,7 @@ export interface GetProductVariantsResponse {
   products: FeaturedProductVariantDto[]; 
 }
 
-export const useCatalog = (productType: string) => {
+export const useGetFeaturedProductsByType = (productType: string) => {
   // 1. Construimos la URL específica del negocio
   const endpoint = `/products/type/${encodeURIComponent(productType)}`;
 

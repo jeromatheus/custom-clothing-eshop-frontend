@@ -2,24 +2,8 @@ import { type CSSProperties } from 'react';
 import { Form, ButtonGroup, ToggleButton, Button } from 'react-bootstrap';
 import { useProductForm } from '../hooks/useProductForm';
 import { formatCurrency } from "../../../shared/utils/prices"; 
+import { type FilterGroupData, type ProductConfig} from "../interfaces"
 import styles from './ProductForm.module.css';
-
-export interface FilterOption {
-  value: string | number;
-  label: string;
-  hex?: string; 
-}
-
-export interface FilterGroupData {
-  id: string;
-  label: string;
-  type: 'size' | 'color' | 'button' | string;
-  options: FilterOption[];
-}
-
-export interface ProductConfig {
-  groups: FilterGroupData[];
-}
 
 interface FilterGroupProps {
   group: FilterGroupData;
