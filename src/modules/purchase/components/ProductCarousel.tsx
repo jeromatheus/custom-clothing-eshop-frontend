@@ -31,8 +31,8 @@ const CarouselSkeleton = () => (
     <Col xs={2} className="p-0 d-flex flex-column gap-2">
       <Skeleton count={4} height={120} borderRadius={4} />
     </Col>
-    <Col xs={10} className="">
-      <Skeleton height="100%" borderRadius={0} />
+    <Col xs={10}>
+      <Skeleton height="95%" borderRadius={0} />
     </Col>
   </Row>
 );

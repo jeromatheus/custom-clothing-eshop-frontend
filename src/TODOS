@@ -1,0 +1,9 @@
+1. Desactivar flechas de sugeridos si no hay nada que mostrar a izq o der.
+2. Limitar altura máxima del carrusel y de las imágenes del carrusel principal.
+3. Cuando hago hover sobre tarjeta de sugeridos hay un glitch porque debe estar buscando la imagen secundaria.
+4. Borrar elementos al pedo que estorven o no aporten entre página y componentes.
+5. Cuando está caída la api no se muestran los errores de ningún tipo.
+6. Alerta no muestra el nombre del producto real que se agregó ni la imagen.
+7. Añadir imágenes a BD para probar si andan en el carrusel y las miniaturas.
+8. Integrar selector de modelos.
+9. Cambio de filtro del formulario debe llamar a la api según sea el filtro.

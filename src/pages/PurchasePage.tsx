@@ -13,7 +13,6 @@ import { SHIRT_FORM_CONFIG, MODEL_OPTIONS } from "../shared/constants/filters";
 import { useGetFeaturedProductsByType } from "../modules/catalog/services/useGetFeaturedProductsByType";
 import { useGetProductById } from "../modules/purchase/services/useGetProductById";
 import { useParams } from "react-router-dom";
-import placeholderImg from "../assets/placeholder.png";
 
 const specsData = [
   { label: "Material", value: "Algodón 100%" },
